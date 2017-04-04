@@ -28,7 +28,9 @@ module.exports = function(app, db) {
 
     var myRes = db
       .collection('schools')
-      .find()
+      .find({
+				medianScore: { $gt: 28 }
+			})
       .limit(limit)
 			.sort({ title: 1 })
       .toArray((err, cursor) => {
